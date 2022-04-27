@@ -3,15 +3,15 @@ import requests
 import json
 import datetime
 import os.path
-import publicsuffix2
 import socket
 import re
+import publicsuffix2
 import dateutil.parser
 
 # operations.py
 from connectors.core.connector import Connector, get_logger, ConnectorError
 
-logger = get_logger('usom')
+logger = get_logger('socradar')
 
 
 def ioc_update(config, params):
@@ -42,12 +42,11 @@ def ioc_update(config, params):
     return False
 
 
-def query(config, params):
+def lookup_ioc(config, params):
     ioc_update(config, params)
     search = params.get("search").replace("\"", "").strip()
     ioc = params.get("ioc").replace("\"", "").strip()
     search = search.strip().lower()
-    # search = re.sub("https?://", "", search)
     path = search
     fqdn = search.split("/")[0]
     domain = ""
@@ -92,13 +91,17 @@ def malware_analysis(config, params):
     except Exception as e:
         logger.error(f"SOCRadar returned error: {str(e)}")
         raise ConnectorError("{0}".format(e))
-        return {"found": False, "error": str(e)}
 
 
 def _check_health(config):
     verify = config.get("verify")
     try:
         response = requests.get("https://platform.socradar.com/", verify=verify)
+        if response.status_code != 200:
+            raise ConnectorError("Unable to connect USOM")
         return True
-    except requests.exceptions.RequestException as ex:
-        return False
+    except Exception as e:
+        raise ConnectorError("Unable to connect USOM {0}".format(e))
+
+
+operations = {"lookup_ioc": lookup_ioc, "malware_analysis": malware_analysis}
