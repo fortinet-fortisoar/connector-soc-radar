@@ -30,6 +30,7 @@
         "visible": true,
         "type": "checkbox",
         "value": "true",
+        "description": " Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True.",
         "name": "verify"
       },
       {
@@ -183,7 +184,7 @@
           "visible": true,
           "type": "integer",
           "name": "alarm_id",
-          "description": ""
+          "description": "Integer alarm id to get details."
         }
       ],
       "enabled": true,
@@ -235,7 +236,7 @@
       "annotation": "threat_analysis",
       "parameters": [
         {
-          "title": "entity",
+          "title": "Entity",
           "required": true,
           "editable": true,
           "visible": true,
@@ -392,11 +393,6 @@
         "response_code": ""
       }
     }
-  ],
-  "playbooks": [
-    {}
-  ],
-  "icon_small": " data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAhFBMVEX////a2+JlZYOXmKvU1NxzdI+Cgpp7fJXg4efNztjr7PBub4rz9Pbl5uv/r7uRkab7/P2NjKKur76IiJ92eJGjna/+w8z/5ur/naz4obD4+fqpprj/orH/o7H+8vS+v8vqw83Vvcn/1Nv/o7LYo7PRobHYsb/8ucS4ucbHvsr/24PaZasGmS6PAAAAu0lEQVQ4y+1SNxLCMBBUPp2CJVs2GAdMNvz/g8RhKDAdVGxzxe7MhjlC/vgh5rMsmy2n+U297fuunr/jmoY4cRgX+90iW6F2VPg7Ye43IpIE6ZRDWa0lQMGURSoaJzj3aAylVBNVHo/gtJS8McgG23JZBWB5oSCwIhIiCluqmyBeBKUckrKMVioEBvxqk5JtnxYgIECucrAguVXtLQ6+hNRReyG8Q+o1Um2eNbupmo+hxs9DXfv+3+n7OAN6qgvGvSYIUQAAAABJRU5ErkJggg==",
-  "icon_large": " data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAhFBMVEX////y8vVcXHt2dpFSUnNubon8/Pw+PmNISGtBQWXm5uvBws7W19/29/mSkqff3+aJiaC0tcPHyNKbnK9kZYK7vMnP0Nmsrbz/orH/6+/t7fB/f5j/4uf/YXqjo7X/f5P+8/X/2d//VW//0Nf/W3X/aoL/lqf/vcj/UGz+q7j/tsL/x9Dj8ZH2AAADyUlEQVRYw+1V6ZKySgztjXQ3+46AyOI26vu/3w04840yiI7Or1umyjI09ElOVkLe8pa3vOUtb3nLW/6XAsv9YbE4rpu/gWv29abbVJuu2y6Wf4C3rD+2i/UyX7bHutvu4VW89XZzyPMTUt4vm3X9sXgRcVlt181hO1De7Np89xSiY6fmp5ov2rz+qPdIeb3YVPtmt3sC0M4CCxEhzaKVRdfbY2OjFtK27k5QpINOIAxQEtv5eTujoyoJgyy1ibMSWmrF7ZxGn9py13rlWU+poVGU8M0RoCvZ+ChNwsQkltJG5AuVgKs1M2IlY4+YCMM46oZnSMF5rLULhJpeMUTC8Tw6AEKBGvpGKZiec45hpJWF3mYOIvseLQIhfcfVyjWdIuEJNSSnjhfL2Aw4E7GLV9KSoTXJCtuPBeMWSQ0/YiI7+xmgh4EJBHxpFP3BSouQIUqvF8QxZAnE4eg3F+i/Lh2bSSUwDqwIVGwIKVJLK6VEcgYsfCUV8210JTpHWygM5uozLngcZ5mrkDISMtGa7UuR2ZlAD6nlmSmTUR+2MP3KEQ04JoBZX4DeGFArzIpvQugbvFQqiaU/EGKFueJGyaSfKB18J9sh1F4JWZbSGGxkWlhflGlPOQ64FimxhDLKWKuADZYjyWyuWWmoHlCF/wCtMnSIGUuOwcRE0ITJsk9KhLrFLfSwxChgoso+xqFSSMUwsQ4kC/CBUD4CjLEsXK6k6/Rlw9EgswkWi457vS8bDlhRIvRlnHq+VmmmteH2dYWAKy8RYw8RTEpVek3hYiwlFjM2oleqXjdCOmTZY7q0mBaCCZVSF2+oWDHPx9wKpq8BSWFFbtS33r6xV6gVy6H1QtSTgoCVhdDXaYKRdle2FWAp4Y3ECxKHBq5rpVlqBsGoa9AnHIj1aZnn7aLaPDkcrsdXmx+qbrOtuq5um93LA/FUbY44YBe73bEdBuzNxQIPHra4Ag7rnvK+7qoj/MmS6rqqqi6WFEz8zn/Tp2NHm/aIlA+nfHbXPnI4/9Fz7OEeGvyj+k3v8uzq/V0jcI/O1EW4ivZrBG9+MOJ0bfvy5AcoPGP1Tmy+DcKNKzATTyAP+Qdzb+F+7uAeradLcswQJl6PS+TCa3jQhZ+w8Hj2YJoo/C7vtwsL7vT2VEsA+UWnXdY13IvNHZynexEmO+0We5jM/++TRh4YWvNBfGiQzaQDJpMI5CbnCcfv8Ybnhu7DX8PNgp54hh/hgJ8tfGvswQ0b08BPjR74/Y6cJz5RxTC3vKd4wCM9B8/1wdxyeXmtwmwDjIbPf+scQYXIC+DQAAAAAElFTkSuQmCC"
+  ]
 }
 

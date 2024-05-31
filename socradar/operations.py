@@ -7,6 +7,19 @@ from connectors.core.connector import Connector, get_logger, ConnectorError
 
 logger = get_logger('socradar')
 
+status_map = {"OPEN": 0,
+              "INVESTIGATING": 1,
+              "RESOLVED": 2,
+              "PENDING_INFO": 4,
+              "LEGAL_REVIEW": 5,
+              "VENDOR_ASSESSMENT": 6,
+              "FALSE_POSITIVE": 9,
+              "DUPLICATE": 10,
+              "PROCESSED_INTERNALLY": 11,
+              "NOT_APPLICABLE": 13,
+              "MITIGATED": 12,
+
+              }
 
 def threat_analysis(config, params):
     key = config.get("threat_analysis_api_key").replace("\"", "").strip()
@@ -104,17 +117,5 @@ def _check_health(config):
 operations = {"get_incidents": get_incidents, "get_incident": get_incident, "threat_analysis": threat_analysis,
               "change_status": change_status}
 
-status_map = {"OPEN": 0,
-              "INVESTIGATING": 1,
-              "RESOLVED": 2,
-              "PENDING_INFO": 4,
-              "LEGAL_REVIEW": 5,
-              "VENDOR_ASSESSMENT": 6,
-              "FALSE_POSITIVE": 9,
-              "DUPLICATE": 10,
-              "PROCESSED_INTERNALLY": 11,
-              "NOT_APPLICABLE": 13,
-              "MITIGATED": 12,
 
-              }
 
