@@ -1,0 +1,398 @@
+{
+  "name": "socradar",
+  "version": "1.1.0",
+  "label": "SOCRadar",
+  "description": "Threat Intelligence enriched with External Attack Surface Management and Digital Risk Protection Services",
+  "publisher": "Community",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "category": "Attack Surface Management",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "URL",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "description": "SOCRadar Threat Intelligence Feeds",
+        "name": "url",
+        "tooltip": "Type SOCRadar feed URL",
+        "value": "https://platform.socradar.com/api"
+      },
+      {
+        "title": "Verify SSL",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "value": "true",
+        "description": " Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True.",
+        "name": "verify"
+      },
+      {
+        "title": "Company ID",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "integer",
+        "description": "SOCRadar Company ID",
+        "name": "company_id",
+        "tooltip": "Company ID"
+      },
+      {
+        "title": "Company API Key",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "description": "SOCRadar Company API Key",
+        "name": "company_key",
+        "tooltip": "Create a key at company settings"
+      },
+      {
+        "title": "Threat Analysis API Key",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "description": "SOCRadar Threat Analysis API API Key",
+        "name": "threat_analysis_api_key",
+        "tooltip": "Please obtain your SOCRadar malware analysis API key by contacting with our Operation Team, operation@socradar.io"
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_incidents",
+      "title": "Get Incidents",
+      "description": "SOCRadar Incident Details",
+      "category": "investigation",
+      "annotation": "get_incidents",
+      "parameters": [
+        {
+          "title": "Start Date",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "name": "start_date",
+          "description": "Start date to start fetching incidents from.\nValid formats are Datetime format (1923-09-23) or Unix Timestamp format (1632355200)"
+        },
+        {
+          "title": "End Date",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "name": "end_date",
+          "description": "The latest date to fetch incidents.\nValid formats are Datetime format (1923-09-23) or Unix Timestamp format (1632355200)."
+        },
+        {
+          "title": "Status",
+          "name": "status",
+          "required": "false",
+          "editable": "true",
+          "visible": "true",
+          "type": "select",
+          "options": [
+            "ON_HOLD",
+            "OPEN",
+            "CLOSED",
+            "INVESTIGATING",
+            "FALSE_POSITIVE",
+            "RESOLVED"
+          ],
+          "description": "Status of the alerts"
+        },
+        {
+          "title": "Limit",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "limit",
+          "value": 50,
+          "description": "Limit the number of incidents to be returned. Max 100"
+        },
+        {
+          "title": "Page",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "page",
+          "value": 1,
+          "description": "Result page"
+        }
+      ],
+      "enabled": true,
+      "output_schema": [
+        {
+          "alarm_asset": "",
+          "alarm_assignees": "",
+          "alarm_id": "",
+          "alarm_related_assets": [],
+          "alarm_related_entities": "",
+          "alarm_response": "",
+          "alarm_risk_level": "",
+          "alarm_text": "",
+          "alarm_type_details": {
+            "alarm_compliance_list": [],
+            "alarm_default_mitigation_plan": "",
+            "alarm_default_risk_level": "",
+            "alarm_detection_and_analysis": "",
+            "alarm_generic_title": "",
+            "alarm_main_type": "",
+            "alarm_post_incident_analysis": "",
+            "alarm_sub_type": ""
+          },
+          "approved_by": "",
+          "content": {
+            "date": "",
+            "email": "",
+            "password": "",
+            "source": "",
+            "type": ""
+          },
+          "date": "",
+          "extra": "",
+          "history": [],
+          "is_approved": "",
+          "last_notification_date": "",
+          "notes": "",
+          "notification_id": "",
+          "status": "",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "operation": "get_incident",
+      "title": "Get Incident",
+      "description": "SOCRadar Incident Details",
+      "category": "investigation",
+      "annotation": "get_incident",
+      "parameters": [
+        {
+          "title": "Alarm ID",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "alarm_id",
+          "description": "Integer alarm id to get details."
+        }
+      ],
+      "enabled": true,
+      "output_schema": [
+        {
+          "alarm_asset": "",
+          "alarm_assignees": "",
+          "alarm_id": "",
+          "alarm_related_assets": [],
+          "alarm_related_entities": "",
+          "alarm_response": "",
+          "alarm_risk_level": "",
+          "alarm_text": "",
+          "alarm_type_details": {
+            "alarm_compliance_list": [],
+            "alarm_default_mitigation_plan": "",
+            "alarm_default_risk_level": "",
+            "alarm_detection_and_analysis": "",
+            "alarm_generic_title": "",
+            "alarm_main_type": "",
+            "alarm_post_incident_analysis": "",
+            "alarm_sub_type": ""
+          },
+          "approved_by": "",
+          "content": {
+            "date": "",
+            "email": "",
+            "password": "",
+            "source": "",
+            "type": ""
+          },
+          "date": "",
+          "extra": "",
+          "history": [],
+          "is_approved": "",
+          "last_notification_date": "",
+          "notes": "",
+          "notification_id": "",
+          "status": "",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "operation": "threat_analysis",
+      "title": "Threat Analysis",
+      "description": "You can obtain the 'trust' score (out of 100) of an entity that is calculated based on various threat feed evaluations conducted by SOCRadar",
+      "category": "investigation",
+      "annotation": "threat_analysis",
+      "parameters": [
+        {
+          "title": "Entity",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "entity",
+          "description": "Intended entity to be analyzed. Valid entity types: [IPv4, IPv6, Domain, Hash]"
+        },
+        {
+          "title": "Advance Investigation",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "advance_investigation",
+          "description": "This parameter can be used to have an advanced malware analysis over the entity.",
+          "value": "false"
+        },
+        {
+          "title": "Force New Analysis",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "force_new_analysis",
+          "description": "Malware analysis results of an entity are being cached for 24 hours after result of the entity being obtained by SOCRadar.",
+          "value": "false"
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "classification": "",
+        "credit_details": {
+          "max_daily_credit": "",
+          "max_monthly_credit": "",
+          "remaining_credit": "",
+          "remaining_daily_credit": "",
+          "remaining_monthly_credit": "",
+          "total_api_credit": ""
+        },
+        "dns_info": {
+          "PTR": []
+        },
+        "findings": [],
+        "geo_location": [
+          {
+            "AsnCode": "",
+            "AsnName": "",
+            "Cidr": "",
+            "CityName": "",
+            "CountryCode": "",
+            "CountryName": "",
+            "Ip": "",
+            "Latitude": "",
+            "Longitude": "",
+            "RegionName": "",
+            "Timezone": "",
+            "ZipCode": ""
+          }
+        ],
+        "is_advance_investigation": "",
+        "is_blacklisted": "",
+        "is_whitelisted": "",
+        "remaining_credit": "",
+        "score": 0.0,
+        "score_details": {},
+        "value": "",
+        "whitelist_hits": "",
+        "whitelist_sources": [],
+        "whois": {
+          "asn": "",
+          "asn_cidr": "",
+          "asn_country_code": "",
+          "asn_date": "",
+          "asn_description": "",
+          "asn_registry": "",
+          "nets": [
+            {
+              "address": "",
+              "cidr": "",
+              "city": "",
+              "country": "",
+              "created": "",
+              "description": "",
+              "emails": [],
+              "handle": "",
+              "name": "",
+              "postal_code": "",
+              "range": "",
+              "state": "",
+              "updated": ""
+            }
+          ],
+          "nir": "",
+          "query": "",
+          "raw": "",
+          "raw_referral": "",
+          "referral": ""
+        }
+      }
+    },
+    {
+      "operation": "change_status",
+      "title": "Change Status",
+      "description": "You can change status of an alert on the SOCRadar",
+      "category": "investigation",
+      "annotation": "change_status",
+      "parameters": [
+        {
+          "title": "Alarm ID",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "alarm_id",
+          "description": "Alarm ID"
+        },
+        {
+          "title": "Status",
+          "name": "status",
+          "required": "true",
+          "editable": "true",
+          "visible": "true",
+          "type": "select",
+          "options": [
+            "OPEN",
+            "INVESTIGATING",
+            "PENDING_INFO",
+            "LEGAL_REVIEW",
+            "VENDOR_ASSESSMENT",
+            "FALSE_POSITIVE",
+            "DUPLICATE",
+            "PROCESSED_INTERNALLY",
+            "NOT_APPLICABLE",
+            "MITIGATED",
+            "RESOLVED"
+          ],
+          "description": "Status of the alerts"
+        },
+        {
+          "title": "Comments",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "comments",
+          "description": "Comments about the incident will be shown under the Resolve Notes section in the incident details."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "data": "",
+        "is_success": "",
+        "message": "",
+        "response_code": ""
+      }
+    }
+  ]
+}
+
