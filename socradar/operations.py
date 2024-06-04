@@ -1,8 +1,13 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2024 Fortinet Inc Copyright end
+"""
+
 import logging
 import requests
 import json
 
-# operations.py
 from connectors.core.connector import Connector, get_logger, ConnectorError
 
 logger = get_logger('socradar')
@@ -17,9 +22,9 @@ status_map = {"OPEN": 0,
               "DUPLICATE": 10,
               "PROCESSED_INTERNALLY": 11,
               "NOT_APPLICABLE": 13,
-              "MITIGATED": 12,
-
+              "MITIGATED": 12
               }
+
 
 def threat_analysis(config, params):
     key = config.get("threat_analysis_api_key").replace("\"", "").strip()
@@ -114,8 +119,9 @@ def _check_health(config):
         raise ConnectorError("Unable to connect SOCRadar {0}".format(e))
 
 
-operations = {"get_incidents": get_incidents, "get_incident": get_incident, "threat_analysis": threat_analysis,
-              "change_status": change_status}
-
-
-
+operations = {
+    "get_incidents": get_incidents,
+    "get_incident": get_incident,
+    "threat_analysis": threat_analysis,
+    "change_status": change_status
+}

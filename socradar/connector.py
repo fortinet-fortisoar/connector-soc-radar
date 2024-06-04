@@ -1,9 +1,14 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2024 Fortinet Inc Copyright end
+"""
+
 from connectors.core.connector import Connector, ConnectorError, get_logger
 from .operations import operations, _check_health
 
-##sudo -u nginx /opt/cyops-integrations/.env/bin/pip install -r /opt/cyops-integrations/integrations/connectors/socradar_1_0_0/requirements.txt
-
 logger = get_logger('socradar')
+
 
 class SOCRadar(Connector):
     def execute(self, config, operation_name, params, **kwargs):
