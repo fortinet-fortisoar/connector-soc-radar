@@ -1,6 +1,6 @@
 {
   "name": "socradar",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "label": "SOCRadar",
   "description": "Threat Intelligence enriched with External Attack Surface Management and Digital Risk Protection Services",
   "publisher": "Community",
@@ -9,19 +9,49 @@
   "cs_approved": false,
   "cs_compatible": true,
   "category": "Attack Surface Management",
-  "help_online": "",
+  "help_online": "https://github.com/fortinet-fortisoar/connector-socradar/blob/release/1.0.0/docs/socradar.md",
   "configuration": {
     "fields": [
       {
-        "title": "URL",
+        "title": "Server URL",
         "required": true,
         "editable": true,
         "visible": true,
         "type": "text",
-        "description": "SOCRadar Threat Intelligence Feeds",
+        "description": "Specify the URL of the SOCRadar server to which you will connect and perform the automated operations.",
         "name": "url",
         "tooltip": "Type SOCRadar feed URL",
         "value": "https://platform.socradar.com/api"
+      },
+      {
+        "title": "Company ID",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "integer",
+        "description": "Specify the Company ID used to access the SOCRadar server to which you will connect and perform the automated operations.",
+        "name": "company_id",
+        "tooltip": "Company ID"
+      },
+      {
+        "title": "Company API Key",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "description": "Specify the Company API Key used to access the SOCRadar server to which you will connect and perform the automated operations.",
+        "name": "company_key",
+        "tooltip": "Create a key at company settings"
+      },
+      {
+        "title": "Threat Analysis API Key",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "description": "Specify the Threat Analysis API Key used to access the SOCRadar server to which you will connect and perform the automated operations.",
+        "name": "threat_analysis_api_key",
+        "tooltip": "Please obtain your SOCRadar malware analysis API key by contacting with our Operation Team, operation@socradar.io"
       },
       {
         "title": "Verify SSL",
@@ -32,36 +62,6 @@
         "value": "true",
         "description": " Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True.",
         "name": "verify"
-      },
-      {
-        "title": "Company ID",
-        "required": true,
-        "editable": true,
-        "visible": true,
-        "type": "integer",
-        "description": "SOCRadar Company ID",
-        "name": "company_id",
-        "tooltip": "Company ID"
-      },
-      {
-        "title": "Company API Key",
-        "required": true,
-        "editable": true,
-        "visible": true,
-        "type": "password",
-        "description": "SOCRadar Company API Key",
-        "name": "company_key",
-        "tooltip": "Create a key at company settings"
-      },
-      {
-        "title": "Threat Analysis API Key",
-        "required": false,
-        "editable": true,
-        "visible": true,
-        "type": "password",
-        "description": "SOCRadar Threat Analysis API API Key",
-        "name": "threat_analysis_api_key",
-        "tooltip": "Please obtain your SOCRadar malware analysis API key by contacting with our Operation Team, operation@socradar.io"
       }
     ]
   },
@@ -69,7 +69,7 @@
     {
       "operation": "get_incidents",
       "title": "Get Incidents",
-      "description": "SOCRadar Incident Details",
+      "description": "Retrieves a detailed list of incidents based on the start date, end date and pagination parameters that you have specified.",
       "category": "investigation",
       "annotation": "get_incidents",
       "parameters": [
@@ -80,7 +80,8 @@
           "visible": true,
           "type": "datetime",
           "name": "start_date",
-          "description": "Start date to start fetching incidents from.\nValid formats are Datetime format (1923-09-23) or Unix Timestamp format (1632355200)"
+          "description": "Specify the start date of the time range within which to search for and retrieve incidents.\nValid formats are Datetime format (1923-09-23) or Unix Timestamp format (1632355200)",
+          "tooltip": "Start date to start fetching incidents."
         },
         {
           "title": "End Date",
@@ -89,7 +90,8 @@
           "visible": true,
           "type": "datetime",
           "name": "end_date",
-          "description": "The latest date to fetch incidents.\nValid formats are Datetime format (1923-09-23) or Unix Timestamp format (1632355200)."
+          "description": "Specify the end date of the time range within which to search for and retrieve incidents.\nValid formats are Datetime format (1923-09-23) or Unix Timestamp format (1632355200).",
+          "tooltip": "End date to start fetching incidents."
         },
         {
           "title": "Status",
@@ -106,7 +108,8 @@
             "FALSE_POSITIVE",
             "RESOLVED"
           ],
-          "description": "Status of the alerts"
+          "description": "Specify the Status of the incident to filter the results from SOCRadar.",
+          "tooltip": "Specify the Status of the incidents."
         },
         {
           "title": "Limit",
@@ -116,7 +119,8 @@
           "type": "integer",
           "name": "limit",
           "value": 50,
-          "description": "Limit the number of incidents to be returned. Max 100"
+          "description": "Specify the maximum number of records to retrieve, per page. Default value is 50. Maximum value is 100",
+          "tooltip": "Specify maximum number of records to retrieve. Default value is 50. Maximum value is 100"
         },
         {
           "title": "Page",
@@ -126,7 +130,8 @@
           "type": "integer",
           "name": "page",
           "value": 1,
-          "description": "Result page"
+          "description": "Specify the page number of records to retrieve from SOCRadar.",
+          "tooltip": "Specify the page number of records to retrieve."
         }
       ],
       "enabled": true,
@@ -173,7 +178,7 @@
     {
       "operation": "get_incident",
       "title": "Get Incident",
-      "description": "SOCRadar Incident Details",
+      "description": "Retrieves a details of incidents based on the Alarm ID that you have specified.",
       "category": "investigation",
       "annotation": "get_incident",
       "parameters": [
@@ -184,7 +189,8 @@
           "visible": true,
           "type": "integer",
           "name": "alarm_id",
-          "description": "Integer alarm id to get details."
+          "description": "Specify the alarm ID to fetch its details from SOCRadar.",
+          "tooltip": "Specify the alarm ID to fetch its details from SOCRadar."
         }
       ],
       "enabled": true,
@@ -231,7 +237,7 @@
     {
       "operation": "threat_analysis",
       "title": "Threat Analysis",
-      "description": "You can obtain the 'trust' score (out of 100) of an entity that is calculated based on various threat feed evaluations conducted by SOCRadar",
+      "description": "Retrieves a details of threat analysis based on the inputs that you have specified. You can obtain the 'trust' score (out of 100) of an entity that is calculated based on various threat feed evaluations conducted by SOCRadar.",
       "category": "investigation",
       "annotation": "threat_analysis",
       "parameters": [
@@ -242,7 +248,8 @@
           "visible": true,
           "type": "text",
           "name": "entity",
-          "description": "Intended entity to be analyzed. Valid entity types: [IPv4, IPv6, Domain, Hash]"
+          "description": "Specify the Intended entity to be analyzed in SOCRadar. Valid entity types: [IPv4, IPv6, Domain, Hash]",
+          "tooltip": "Specify the Intended entity to be analyzed in SOCRadar. Valid entity types: [IPv4, IPv6, Domain, Hash]"
         },
         {
           "title": "Advance Investigation",
@@ -251,8 +258,9 @@
           "visible": true,
           "type": "checkbox",
           "name": "advance_investigation",
-          "description": "This parameter can be used to have an advanced malware analysis over the entity.",
-          "value": "false"
+          "description": "Specify the this parameter to have an advanced malware analysis over the entity.",
+          "tooltip": "Specify the this parameter to have an advanced malware analysis over the entity.",
+          "value": false
         },
         {
           "title": "Force New Analysis",
@@ -261,8 +269,9 @@
           "visible": true,
           "type": "checkbox",
           "name": "force_new_analysis",
-          "description": "Malware analysis results of an entity are being cached for 24 hours after result of the entity being obtained by SOCRadar.",
-          "value": "false"
+          "description": "Specify the Malware analysis results of an entity are being cached for 24 hours after result of the entity being obtained by SOCRadar.",
+          "tooltip": "Specify the Malware analysis results of an entity are being cached for 24 hours.",
+          "value": false
         }
       ],
       "enabled": true,
@@ -340,7 +349,7 @@
     {
       "operation": "change_status",
       "title": "Change Status",
-      "description": "You can change status of an alert on the SOCRadar",
+      "description": "Updates status of an incident based on the incident ID and status that you have specified.",
       "category": "investigation",
       "annotation": "change_status",
       "parameters": [
@@ -351,7 +360,8 @@
           "visible": true,
           "type": "integer",
           "name": "alarm_id",
-          "description": "Alarm ID"
+          "description": "Specify the ID of the Alarm to update it on SOCRadar.",
+          "tooltip": "Specify the ID of the Alarm to update it on SOCRadar."
         },
         {
           "title": "Status",
@@ -373,7 +383,8 @@
             "MITIGATED",
             "RESOLVED"
           ],
-          "description": "Status of the alerts"
+          "description": "Specify the Status of the Alarm to update it on SOCRadar.",
+          "tooltip": "Specify the Status of the Alarm to update it on SOCRadar."
         },
         {
           "title": "Comments",
@@ -382,7 +393,8 @@
           "visible": true,
           "type": "text",
           "name": "comments",
-          "description": "Comments about the incident will be shown under the Resolve Notes section in the incident details."
+          "description": "Specify the comments about the incident to update it on SOCRadar. This will be shown under the Resolve Notes section in the incident details.",
+          "tooltip": "Specify the comments about the incident to update it on SOCRada."
         }
       ],
       "enabled": true,

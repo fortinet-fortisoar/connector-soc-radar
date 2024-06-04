@@ -2,15 +2,13 @@
   "type": "workflow_collections",
   "data": [
     {
-      "@context": "/api/3/contexts/WorkflowCollection",
       "@type": "WorkflowCollection",
-      "name": "Sample - SOCRadar",
-      "description": null,
+      "name": "Sample - SOCRadar - 1.0.0",
+      "description": "Sample playbooks for \"SOCRadar\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": null,
-      "id": 183,
-      "createDate": 1712147520.00531,
-      "modifyDate": 1716136111.82426,
+      "uuid": "58221374-2983-4dd9-8b3e-e2509ae645fd",
+      "id": 387,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [],
@@ -32,7 +30,7 @@
           ],
           "synchronous": false,
           "lastModifyDate": 1714324937,
-          "collection": "/api/3/workflow_collections/f792f6fd-7906-4d90-853f-33c2d7b23e14",
+          "collection": "/api/3/workflow_collections/58221374-2983-4dd9-8b3e-e2509ae645fd",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/f7155845-8775-4d48-bfed-ab08672c618b",
           "steps": [
@@ -83,7 +81,7 @@
                   "force_new_analysis": false,
                   "advance_investigation": false
                 },
-                "version": "1.1.0",
+                "version": "1.0.0",
                 "connector": "socradar",
                 "operation": "threat_analysis",
                 "operationTitle": "Threat Analysis",
@@ -182,15 +180,15 @@
           "groups": [],
           "priority": null,
           "uuid": "3117f20a-5155-402e-8c38-b56a81d76392",
-          "id": 2126,
+          "id": 4982,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Domain_Enrichment",
+            "Subroutine",
             "IP_Enrichment",
-            "Subroutine"
+            "Domain_Enrichment"
           ]
         },
         {
@@ -199,15 +197,15 @@
           "name": "Close SOCRadar Alarm",
           "aliasName": null,
           "tag": null,
-          "description": null,
-          "isActive": true,
+          "description": "Close an incident based on the incident ID and status that you have specified.",
+          "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1716136091,
-          "collection": "/api/3/workflow_collections/f792f6fd-7906-4d90-853f-33c2d7b23e14",
+          "lastModifyDate": 1717494503,
+          "collection": "/api/3/workflow_collections/58221374-2983-4dd9-8b3e-e2509ae645fd",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/be4b23f0-92f7-4c5f-a88d-604f041010c7",
           "steps": [
@@ -223,7 +221,7 @@
                   "alarm_id": "{{vars.input.records[0].sourceId}}",
                   "comments": "Automated Close"
                 },
-                "version": "1.1.0",
+                "version": "1.0.0",
                 "connector": "socradar",
                 "operation": "change_status",
                 "operationTitle": "Change Status",
@@ -231,8 +229,8 @@
                 "step_variables": []
               },
               "status": null,
-              "top": "165",
-              "left": "125",
+              "top": "160",
+              "left": "320",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
               "uuid": "32b16a43-b9b2-46cd-8b61-07308ebc6405"
@@ -311,12 +309,14 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "6e74a2c9-8de2-4ca4-a757-0c221899cca5",
-          "id": 2123,
+          "id": 4983,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
-          "recordTags": []
+          "recordTags": [
+            "SOCRadar"
+          ]
         },
         {
           "@type": "Workflow",
@@ -324,15 +324,15 @@
           "name": "Get Reputation",
           "aliasName": null,
           "tag": null,
-          "description": null,
-          "isActive": true,
+          "description": "Retrieves a details of threat analysis based on the inputs that you have specified. You can obtain the 'trust' score (out of 100) of an entity that is calculated based on various threat feed evaluations conducted by SOCRadar.",
+          "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1714323263,
-          "collection": "/api/3/workflow_collections/f792f6fd-7906-4d90-853f-33c2d7b23e14",
+          "lastModifyDate": 1717494441,
+          "collection": "/api/3/workflow_collections/58221374-2983-4dd9-8b3e-e2509ae645fd",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/f0a00624-8e84-40a6-99d6-84db9c4ee0fa",
           "steps": [
@@ -348,7 +348,7 @@
                   "force_new_analysis": false,
                   "advance_investigation": false
                 },
-                "version": "1.1.0",
+                "version": "1.0.0",
                 "connector": "socradar",
                 "operation": "threat_analysis",
                 "operationTitle": "Threat Analysis",
@@ -420,12 +420,14 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "95711292-7157-4b8d-97c5-76065d0f8b8b",
-          "id": 2125,
+          "id": 4984,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
-          "recordTags": []
+          "recordTags": [
+            "SOCRadar"
+          ]
         },
         {
           "@type": "Workflow",
@@ -433,15 +435,15 @@
           "name": "Get SOCRadar Alarm",
           "aliasName": null,
           "tag": null,
-          "description": null,
-          "isActive": true,
+          "description": "Retrieves a details of incidents based on the Alarm ID that you have specified.",
+          "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1714323135,
-          "collection": "/api/3/workflow_collections/f792f6fd-7906-4d90-853f-33c2d7b23e14",
+          "lastModifyDate": 1717494561,
+          "collection": "/api/3/workflow_collections/58221374-2983-4dd9-8b3e-e2509ae645fd",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/5b4c62c9-dfc8-4662-8b00-1b27ae703c16",
           "steps": [
@@ -455,7 +457,7 @@
                 "params": {
                   "alarm_id": 29106477
                 },
-                "version": "1.1.0",
+                "version": "1.0.0",
                 "connector": "socradar",
                 "operation": "get_incident",
                 "operationTitle": "Get Incident",
@@ -527,12 +529,14 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "c342de80-fd64-41f3-94a4-f366b738e51b",
-          "id": 2124,
+          "id": 4985,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
-          "recordTags": []
+          "recordTags": [
+            "SOCRadar"
+          ]
         },
         {
           "@type": "Workflow",
@@ -540,15 +544,15 @@
           "name": "Ingest SOCRadar Alarms",
           "aliasName": null,
           "tag": null,
-          "description": null,
-          "isActive": true,
+          "description": "Retrieves a detailed list of incidents based on the start date, end date and pagination parameters that you have specified.",
+          "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1716136014,
-          "collection": "/api/3/workflow_collections/f792f6fd-7906-4d90-853f-33c2d7b23e14",
+          "lastModifyDate": 1717494607,
+          "collection": "/api/3/workflow_collections/58221374-2983-4dd9-8b3e-e2509ae645fd",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/a5479980-fa20-410e-824b-a5597a49dcc9",
           "steps": [
@@ -625,7 +629,7 @@
                   "end_date": "{{vars.end}}",
                   "start_date": "{{vars.start}}"
                 },
-                "version": "1.1.0",
+                "version": "1.0.0",
                 "connector": "socradar",
                 "operation": "get_incidents",
                 "operationTitle": "Get Incidents",
@@ -718,19 +722,22 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "c424f00f-f4ec-4098-85d1-945bb192d59e",
-          "id": 2027,
+          "id": 4986,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
-          "recordTags": []
+          "recordTags": [
+            "SOCRadar"
+          ]
         }
       ]
     }
   ],
   "exported_tags": [
-    "Domain_Enrichment",
+    "Subroutine",
     "IP_Enrichment",
-    "Subroutine"
+    "Domain_Enrichment",
+    "SOCRadar"
   ]
 }
