@@ -82,7 +82,7 @@
                   "advance_investigation": false
                 },
                 "version": "1.0.0",
-                "connector": "socradar",
+                "connector": "soc-radar",
                 "operation": "threat_analysis",
                 "operationTitle": "Threat Analysis",
                 "pickFromTenant": false,
@@ -222,7 +222,7 @@
                   "comments": "Automated Close"
                 },
                 "version": "1.0.0",
-                "connector": "socradar",
+                "connector": "soc-radar",
                 "operation": "change_status",
                 "operationTitle": "Change Status",
                 "pickFromTenant": false,
@@ -349,7 +349,7 @@
                   "advance_investigation": false
                 },
                 "version": "1.0.0",
-                "connector": "socradar",
+                "connector": "soc-radar",
                 "operation": "threat_analysis",
                 "operationTitle": "Threat Analysis",
                 "pickFromTenant": false,
@@ -458,7 +458,7 @@
                   "alarm_id": 29106477
                 },
                 "version": "1.0.0",
-                "connector": "socradar",
+                "connector": "soc-radar",
                 "operation": "get_incident",
                 "operationTitle": "Get Incident",
                 "pickFromTenant": false,
@@ -630,7 +630,7 @@
                   "start_date": "{{vars.start}}"
                 },
                 "version": "1.0.0",
-                "connector": "socradar",
+                "connector": "soc-radar",
                 "operation": "get_incidents",
                 "operationTitle": "Get Incidents",
                 "pickFromTenant": false,

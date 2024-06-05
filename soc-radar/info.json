@@ -1,5 +1,5 @@
 {
-  "name": "socradar",
+  "name": "soc-radar",
   "version": "1.0.0",
   "label": "SOCRadar",
   "description": "Threat Intelligence enriched with External Attack Surface Management and Digital Risk Protection Services",
@@ -9,7 +9,7 @@
   "cs_approved": false,
   "cs_compatible": true,
   "category": "Attack Surface Management",
-  "help_online": "https://github.com/fortinet-fortisoar/connector-socradar/blob/release/1.0.0/docs/socradar.md",
+  "help_online": "https://github.com/fortinet-fortisoar/connector-soc-radar/blob/release/1.0.0/docs/socradar.md",
   "configuration": {
     "fields": [
       {
